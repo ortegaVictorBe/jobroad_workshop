@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;  
+  font-family: "Montserrat", sans-serif; 
+ 
+}
+h1 {
+  color: black;
+}
+#lineOne img {
+  width: 250px;
+  height: 175px;
+  border: 8px solid #FF914D;
+}
+
+#lineTwo img {
+  width: 175px;
+  height: 250px;
+  border: 8px solid #FF914D;
+}
+
+
+/* container {
+  background-color: aqua;
+  border-style: solid;
+  border-radius: 5px;
+  max-width: 500px;
+} */
