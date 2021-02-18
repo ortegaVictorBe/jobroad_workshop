@@ -15,6 +15,17 @@ body {
 h1 {
   color: black;
 }
+h3 {
+  color: black;
+}
+
+
+#lineIndex img {
+  width: 200px;
+  height: 300px;  
+  border: 8px solid #FF914D;
+}
+
 #lineOne img {
   width: 250px;
   height: 175px;
@@ -26,6 +37,8 @@ h1 {
   height: 250px;
   border: 8px solid #FF914D;
 }
+
+
 
 
 /* container {

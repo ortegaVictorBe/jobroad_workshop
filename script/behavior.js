@@ -10,6 +10,10 @@ const people06 = document.getElementById("people06");
 const btnReload = document.getElementById("reload");
 const btnStart = document.getElementById("start");
 
+//Get indexelements
+const indxTool01 = document.getElementById("tool01");
+const indxTool02 = document.getElementById("tool02");
+
 
 people01.onclick = () => {
     people01.src = "../img/hideImg01.jpg";
@@ -41,6 +45,12 @@ btnReload.onclick = () => {
     people06.src = "../img/06_p.jpg";
 
 }
+
+indxTool01.onclick = () => {
+    alert("tootl 1");
+    window.open("whoDidIt.html", "_self");
+}
+
 
 btnStart.onclick = () => {
     window.open("index.html", "_self");
