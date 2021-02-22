@@ -82,10 +82,16 @@ btnReload.onclick = () => {
     drawQuestion(numberQuestion);
 }
 
+btnMessage.onclick = () => {
+    window.open("whoDidItMessage.html", "_self");
+}
+
 //Sending to homePage
 btnStart.onclick = () => {
     window.open("index.html", "_self");
 }
+
+
 
 //start with the first Question
 btnMessage.style.display = "none";
