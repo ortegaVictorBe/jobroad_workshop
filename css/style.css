@@ -12,10 +12,7 @@ body {
   font-family: "Montserrat", sans-serif; 
  
 }
-h1 {
-  color: black;
-}
-h3 {
+h1,h3,h4,p {
   color: black;
 }
 
@@ -24,21 +21,32 @@ h3 {
   width: 200px;
   height: 300px;  
   border: 8px solid #FF914D;
+  cursor: url(../img/mouseOver_p.png), auto;
 }
 
 #lineOne img {
   width: 250px;
   height: 175px;
   border: 8px solid #FF914D;
+  cursor: url(../img/mouseOver_p.png), auto;
 }
 
 #lineTwo img {
   width: 175px;
   height: 250px;
   border: 8px solid #FF914D;
+  cursor: url(../img/mouseOver_p.png), auto;
 }
 
-
+/* .cursor {
+  width: 20px;
+  height: 20px;
+  border:1px solid black;
+  position: absolute;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out; 
+  animation: cursor;
+} */
 
 
 /* container {
