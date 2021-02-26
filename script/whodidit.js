@@ -17,11 +17,11 @@ const indxTool02 = document.getElementById("tool02");
 
 //Question object
 const questions = [
-    "Quien es Fumador?",
-    "Quien es Bohemio?",
-    "Quien es Buena gente?",
-    "Quien es Iracundo",
-    "Quien es Religios@?",
+    "Is of was hij/zij goed op school?",
+    "Maakt hij/zij gebruik van het openbaar vervoer?",
+    "Spaart hij/zij actief geld?",
+    "Groet hij/zij de buren?",
+    "Staat hij/zij altijd vroeg op?",
     "TODOS USTEDES FALLARON POR JUZGAR ANTES DE TIEMPO"
 ];
 
