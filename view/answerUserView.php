@@ -15,9 +15,8 @@
 <body>
     <!-- Getting the questions answered by session -->
     <? 
-    $session_id=session_id();
-    //  $questionsAnswered=$_SESSION['questionsAnswered'];
-    //evaluar cuando ya contesto la pregunta -ojo-aqui me quede
+    $session_id=session_id(); 
+    
 
     ?>
     <div class="container mt-3">
@@ -36,6 +35,12 @@
         <?php
             $showMessage=0;
             $message="";
+            $currentQuestion=$question->loadCurrentQuestion();
+            $questionAnswered=$answer->questionAnswered($currentQuestion['ID'],$session_id);
+            if (isset($questionAnswered)) {                
+                $showMessage=1;
+                $message=$questionAnswered['description'];                      
+            }
             
             if(isset($_POST['btnUpdate'])){
                 $return=0;
@@ -51,12 +56,12 @@
                     $message=$userAnswer;                      
                 }
                 
-                } 
-
+                }                
+            
             //Next Question Button
             if (isset($_POST['btnNextQuestion'])) {
                 $showMessage=0;
-            }    
+            } 
                 
             
             ?>
@@ -66,27 +71,27 @@
                 <div class="jumbotron p-2 text-center">
                     <form action="" method="post">
                         <input type="hidden" name="ID_Question" value=<? echo $question->loadCurrentQuestion()['ID'];?>>
-                        <h1 class="my-3">
-                            <? echo $question->loadCurrentQuestion()['description'];?>
+                        <h1 class="mt-3 mb-4">
+                            <? echo $currentQuestion['description'];?>
                         </h1>
                         <? 
                         if($showMessage==0) {?>
-                        <fieldset class="mt-2">
+                        <fieldset class="mt-3 mb-4">
                             <input type="text" name="userAnswer" size="25" required="true">
                         </fieldset>
                         <?} else{
-                        echo "<center><div id='answerMessage' class='alert alert-dismissible alert-warning p-1 mt-4 w-75'>
+                        echo "<center><div id='answerMessage' class='alert alert-dismissible alert-warning p-1 mt-5 w-75'>
                         <h3 id='questionText' class='display-6'>
                           <strong>".$message."</strong></h3></div></center>";                        
                         } ?>
 
                         <? if($showMessage==0) { ?>
-                        <fieldset class="mt-2">
+                        <fieldset class="mt-3">
                             <input type="submit" class="btn btn-primary" name="btnUpdate" value="Send Answer">
                         </fieldset>
                         <? }else{ ?>
-                        <fieldset class="mt-2">
-                            <input type="submit" class="btn btn-primary" name="btnNextQuestion" value="Next Question">
+                        <fieldset class="mt-3">
+                            <input id="btnNextQuestion" class="btn btn-primary" value="Next Question">
                         </fieldset>
                         <?}?>
                     </form>
@@ -97,22 +102,23 @@
                     <img src="../img/blackbox_bg_small.png" class="img-fluid" />
                 </div>
                 <div class="jumbotron p-2 text-center">
-                    <h2>Player</h2>
+                    <img src="../img/player_think.png" class="img-fluid" />
+                    <!-- <h2>Player</h2> -->
+                    <h6 class='text-center'><i class='fa fa-spinner fa-pulse fa-1x fa-fw'></i></i>
+                        <span>Playing ...</span>
+                    </h6>
                 </div>
             </div>
         </div>
         <div id="buttons" class="row text-center mb-1">
             <div class="col">
                 <div class="jumbotron p-2 text-center">
-                    <button id="start" type="button" class="btn btn-warning">Home</button>
-                    <button id="reload" type="button" class="btn btn-warning">
-                        Blackbox - Home
-                    </button>
+                    <h4>Rules: Answer the question, send it and wait for instructions .. :) </h4>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../script/blackbox_questionListView.js"></script>
+    <script src="../script/blackbox_answerUserView.js"></script>
 </body>
 
 </html>
