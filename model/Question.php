@@ -7,7 +7,7 @@ public function __construct(){
     $this->conn=new ConnectDB_MySql();    
 }
 
-
+//This function load the questions from the database and save into array
 public function loadQuestions(){
     //Selecting from the database
     $handle = $this->conn->getPdo()->prepare('SELECT `ID`, `description`,`available`,`order` FROM blackbox_questions ORDER BY `order`');
@@ -16,7 +16,40 @@ public function loadQuestions(){
     foreach ($loadQuestions as $key => $oneQuestion) {
         array_push($this->questions,$oneQuestion);
     }
-//    var_dump($this->questions);
+}
+
+public function totalAvailableQuestions(){
+    $handle = $this->conn->getPdo()->prepare('SELECT COUNT(`ID`) AS `total_questions`FROM blackbox_questions WHERE `available`=:a AND `order` > :b');
+    $handle->bindValue(':a',1);
+    $handle->bindValue(':b',0);
+    $handle->execute();
+    $availableQuestions=$handle->fetch();
+    return $availableQuestions;
+}
+//Set the currentQuestion related with the order
+public function setCurrentQuestion($currentAvailable){
+        $handleClean = $this->conn->getPdo()->prepare("UPDATE blackbox_questions SET `current`=:a WHERE `available`=:b");          
+        $handleClean->bindValue(':a', 0);
+        $handleClean->bindValue(':b', 1);
+        $handleClean->execute();           
+         
+        //Setting the first available
+        $handle = $this->conn->getPdo()->prepare('SELECT `ID`, `description`,`available`,`order`,`current` FROM blackbox_questions WHERE `available`=:a AND `order`>:b ORDER BY `order`');
+        $handle->bindValue(':a', 1);
+        $handle->bindValue(':b', $currentAvailable);
+        $handle->execute();
+        $loadNextAvailable=$handle->fetch();
+        
+        if (empty($loadNextAvailable)==false ) {            
+            //Setting the new current
+            $handleCurrent = $this->conn->getPdo()->prepare("UPDATE blackbox_questions SET `current`=:a WHERE `ID`=:b AND `available`=:c");          
+            $handleCurrent->bindValue(':a', 1);
+            $handleCurrent->bindValue(':b', $loadNextAvailable['ID']);
+            $handleCurrent->bindValue(':c', 1);
+            $handleCurrent->execute();
+        }   
+        
+        return $loadNextAvailable;
 }
 
 //load the current question
@@ -33,7 +66,7 @@ public function loadCurrentQuestion(){
         // REvisar este retorno--ojo --
     }
 }
-
+//Update Question in listQuestionView
 public function updateQuestion($id, $desc, $available, $order){            
     $handle = $this->conn->getPdo()->prepare("UPDATE blackbox_questions SET `description`=:a, `available`=:b, `order`=:c WHERE `ID`=:d");         
     $handle->bindValue(':a', $desc);
@@ -77,6 +110,7 @@ echo " </tbody></table>";
 
 }
 
+//This function is used for read all the questions in the Listquestion page, to update them
 public function getQuestions()
 {    
     

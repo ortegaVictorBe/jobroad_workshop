@@ -37,12 +37,12 @@
             </div>
         </div>
         <div id="content" class="row text-center mb-1">
-            <div class="col-10">
+            <div class="col-9">
                 <div class="jumbotron p-2 text-center">
                     <img src="./img/blackbox_bg.png" class="img-fluid mr-5" />
                 </div>
             </div>
-            <div class="col">
+            <div class="col-3">
                 <div id="content-content" class="jumbotron p-2 text-center">
                     <div class="mb-2"><button id="question-list" type="button"
                             class="btn btn-warning btn-block">Questions</button>
@@ -50,11 +50,11 @@
                     <div class="mb-2"><button id="start-game" type="button" class="btn btn-warning btn-block">Start
                             Game</button>
                     </div>
-                    <div class="mb-2"><button id="show-results" type="button"
-                            class="btn btn-warning btn-block">Results</button>
+                    <div>
+                        <input id="playerUrl" class="img-fluid" type="text" value=<?php $url_actual = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]; $url_actual=substr($url_actual,0,-12)."controller/answerUserController.php";
+                        echo "$url_actual"; ?>>
+                        <p>Player URL</p>
                     </div>
-
-
                 </div>
             </div>
         </div>

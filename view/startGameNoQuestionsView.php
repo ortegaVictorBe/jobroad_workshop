@@ -27,36 +27,19 @@
             </div>
         </div>
         <div id="content" class="row text-center mb-1">
-            <?php
-            if(isset($_POST['btnUpdate'])){                
-                foreach ($_POST['ID_Question'] as $IDs) {
-                     $id_update=$IDs;
-                     $desc_update=cleanInput($_POST['desc_Question'][$IDs]);
-                     if(isset($_POST['available_Question'][$IDs])){
-                        $available_update=1;    
-                     }else
-                     {
-                         $available_update=0;
-                     }                     
-                    
-                     $order_update=cleanInput($_POST['order_Question'][$IDs]);
-                     $return=$questions->updateQuestion($id_update, $desc_update, $available_update,$order_update);    
-                }     
-                
-                $questions->commitChanges();                
-            }
-            ?>
+
             <div class="col">
                 <div class="jumbotron p-2 text-center">
                     <form action="" method="post">
-                        <?php $questions->loadQuestions(); ?>
-                        <div class="scrollable-questions">
-                            <?php echo $questions->getQuestions(); ?>
-                        </div>
-
-                        <fieldset class="mt-2">
-                            <input type="submit" class="btn btn-primary" name="btnUpdate" value="Update">
-                        </fieldset>
+                        <center>
+                            <div class="alert alert-dismissible alert-warning p-5 w-75">
+                                <h3 class="display-4">
+                                    <strong>
+                                        You haven't questions to use with players; Review the questions :)
+                                    </strong>
+                                </h3>
+                            </div>
+                        </center>
                     </form>
                 </div>
             </div>
@@ -65,8 +48,7 @@
                     <img src="../img/blackbox_bg_small.png" class="img-fluid" />
                 </div>
                 <div class="jumbotron p-2 text-center">
-                    <h2 class="mb-4">Questions</h2>
-                    <img src="../img/question_think.png" class="img-fluid" />
+                    <h2>Answers</h2>
                 </div>
             </div>
         </div>
@@ -81,7 +63,7 @@
             </div>
         </div>
     </div>
-    <script src="../script/questionListView.js"></script>
+    <script src="../script/startGameNoQuestionsView.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,7 @@
 <?php
 declare(strict_types=1);
 session_start();
-// $questionsAnswered=[];
-// $_SESSION['questionsAnswered']=$questionsAnswered;
-echo session_id();
 
-//require "model/autoload.php";
 require "../model/ConnectDB.php";
 require "../model/Question.php";
 require "../model/Answer.php";
@@ -21,7 +17,15 @@ function cleanInput($data){
     return $data;
 };
 
-require '../view/answerUserView.php';
+//Evaluate if there are Questions availables
+$totalAvailableQuestions=$question->totalAvailableQuestions();
+
+if (empty($totalAvailableQuestions)) {
+    require '../view/answerUserView.php';    
+}else{
+    require '../view/answerUserNoQuestionView.php';
+}
+
 unset($answer);
 unset($question);
 

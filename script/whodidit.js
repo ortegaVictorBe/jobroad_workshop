@@ -49,46 +49,46 @@ drawQuestion = (imageclicked) => {
 
 
 people01.onclick = () => {
-    people01.src = "../img/hideImg01.jpg";
+    people01.src = "./img/hideImg01.jpg";
     drawQuestion(clicks[0]);
     clicks[0] = 1;
 }
 people02.onclick = () => {
-    people02.src = "../img/hideImg01.jpg";
+    people02.src = "./img/hideImg01.jpg";
     drawQuestion(clicks[1]);
     clicks[1] = 1;
 }
 people03.onclick = () => {
-    people03.src = "../img/hideImg01.jpg";
+    people03.src = "./img/hideImg01.jpg";
     drawQuestion(clicks[2]);
     clicks[2] = 1;
 
 }
 
 people04.onclick = () => {
-    people04.src = "../img/hideImg02.jpg";
+    people04.src = "./img/hideImg02.jpg";
     drawQuestion(clicks[3]);
     clicks[3] = 1;
 }
 people05.onclick = () => {
-    people05.src = "../img/hideImg02.jpg";
+    people05.src = "./img/hideImg02.jpg";
     drawQuestion(clicks[4]);
     clicks[4] = 1;
 }
 people06.onclick = () => {
-    people06.src = "../img/hideImg02.jpg";
+    people06.src = "./img/hideImg02.jpg";
     drawQuestion(clicks[5]);
     clicks[5] = 1;
 }
 
 //reloading the pictures
 btnReload.onclick = () => {
-    people01.src = "../img/01_p.jpg";
-    people02.src = "../img/02_p.jpg";
-    people03.src = "../img/03_p.jpg";
-    people04.src = "../img/04_p.jpg";
-    people05.src = "../img/05_p.jpg";
-    people06.src = "../img/06_p.jpg";
+    people01.src = "./img/01_p.jpg";
+    people02.src = "./img/02_p.jpg";
+    people03.src = "./img/03_p.jpg";
+    people04.src = "./img/04_p.jpg";
+    people05.src = "./img/05_p.jpg";
+    people06.src = "./img/06_p.jpg";
 
     //Reset Questions
     numberQuestion = 0;
