@@ -35,6 +35,7 @@
                 <div class="jumbotron p-2 text-center">
                     <?php if (isset($_POST['btnLoadTop3'])) { ?>
                     <div class="row">
+                        <input type="hidden" name="playingControl" value=1>
                         <div class="col"><img src="../img/top3.png" class="img-fluid ml-3" /> </div>
                         <div class="col">
                             <?php $answer->getTop3($_SESSION['currentQuestion_ID'])?>
@@ -55,6 +56,7 @@
                     <form action="" method="post">
                         <div class="row">
                             <div class="col">
+                                <input type="hidden" name="playingControl" value=1>
                                 <div class="scrollable-answers">
                                     <?php                                     
                                      $answer->getAnswersByQuestion($_SESSION['currentQuestion_ID']); ?></div>

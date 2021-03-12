@@ -20,7 +20,7 @@ function cleanInput($data){
 //Evaluate if there are Questions availables
 $totalAvailableQuestions=$question->totalAvailableQuestions();
 
-if (empty($totalAvailableQuestions)) {
+if ($totalAvailableQuestions['total_questions'] > 0) {
     require '../view/answerUserView.php';    
 }else{
     require '../view/answerUserNoQuestionView.php';

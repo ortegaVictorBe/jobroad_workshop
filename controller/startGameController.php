@@ -3,7 +3,6 @@ declare(strict_types=1);
 session_start();
 
 
-//require "model/autoload.php";
 require "../model/ConnectDB.php";
 require "../model/Question.php";
 require "../model/Answer.php";
@@ -13,6 +12,17 @@ $question=new Question();
 
 //Getting the total of available Questions
 $totalAvailableQuestions=$question->totalAvailableQuestions();
+
+//Evaluating if we have to delete de answers
+
+if (isset($_POST['playingControl']) && isset($_POST['playingControl'])==1) {
+//  playing mode
+}else{
+    //Deleting the answers
+    //  $answer->deleteAnswers();
+    //  $question->commitChanges();
+    echo "Delete Answers";
+}
 
 if ($totalAvailableQuestions['total_questions'] > 0) {   
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
@@ -24,7 +34,7 @@ if ($totalAvailableQuestions['total_questions'] > 0) {
                     
                     if (empty($currentQuestion)) {
                         //Pensar que hacer aqui
-                        echo "No mas spreguntas";
+                        echo " <strong>*Last Question!!</strong>";
                     }else{
                         $_SESSION['currentQuestion_ID']=$currentQuestion['ID'];
                         $_SESSION['currentQuestion_description']=$currentQuestion['description'];
@@ -45,9 +55,9 @@ if ($totalAvailableQuestions['total_questions'] > 0) {
             
             //Deleting the answers
             // $answer->deleteAnswers();
-            $question->commitChanges();
+            // $question->commitChanges();
         };
-        // var_dump($_SESSION);
+        
         require '../view/startGameView.php';
 }else{
     //No questions Availables at the beginning

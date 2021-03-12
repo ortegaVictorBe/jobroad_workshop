@@ -52,7 +52,7 @@
                     </div>
                     <div>
                         <input id="playerUrl" class="img-fluid" type="text" value=<?php $url_actual = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]; $url_actual=substr($url_actual,0,-12)."controller/answerUserController.php";
-                        echo "$url_actual"; ?>>
+                        echo "$url_actual"; ?> onClick="this.select();">
                         <p>Player URL</p>
                     </div>
                 </div>
