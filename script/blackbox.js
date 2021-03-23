@@ -17,7 +17,8 @@ btnQuestions.onclick = () => {
 
 btnStartGame.onclick = () => {
 
-    window.open("./controller/startGameController.php", "_self");
+    // window.open("./controller/startGameController.php", "_self");
+    window.open("./controller/prepareGameController.php", "_self");
 
 }
 

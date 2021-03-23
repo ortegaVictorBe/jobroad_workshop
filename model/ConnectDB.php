@@ -10,12 +10,7 @@ class ConnectDB_MySql implements ConnectDB{
     private $dbPass="root";
     private $db="jobroad_workshop";
 
-    // //Proiduction
-    // private $host="localhost";
-    // private $dbUser="w250137";
-    // private $dbPass="kikuWOka74";
-    // private $db="w250137_jobroad";
-
+   //Production
     // private $host="localhost";
     // private $dbUser="c2161152";
     // private $dbPass="DEbu24pasa";

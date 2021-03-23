@@ -19,9 +19,9 @@ if (isset($_POST['playingControl']) && isset($_POST['playingControl'])==1) {
 //  playing mode
 }else{
     //Deleting the answers
-    //  $answer->deleteAnswers();
-    //  $question->commitChanges();
-    echo "Delete Answers";
+     $answer->deleteAnswers();
+     $question->commitChanges();
+    
 }
 
 if ($totalAvailableQuestions['total_questions'] > 0) {   
