@@ -1,7 +1,7 @@
 
 
 //Get the buttons
-const btnReload = document.getElementById("reload");
+// const btnReload = document.getElementById("reload");
 const btnStart = document.getElementById("start");
 
 //Sending to homePage
@@ -10,6 +10,6 @@ btnStart.onclick = () => {
 }
 
 //reloading the pictures
-btnReload.onclick = () => {
-    window.open("whoDidit.html", "_self");
-}
+// btnReload.onclick = () => {
+//     window.open("whoDidIt.html", "_self");
+// }

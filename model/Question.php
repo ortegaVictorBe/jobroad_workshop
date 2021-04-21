@@ -54,7 +54,7 @@ public function setCurrentQuestion($currentAvailable){
 
 //load the current question
 public function loadCurrentQuestion(){
-    $handle=$this->conn->getPdo()->prepare('SELECT `ID`,`description` FROM blackbox_questions WHERE `current`=:current');
+    $handle=$this->conn->getPdo()->prepare('SELECT `ID`,`order`,`description` FROM blackbox_questions WHERE `current`=:current');
     $handle->bindValue(':current','1');
     $handle->execute();
     $currenQuestion=$handle->fetchAll();

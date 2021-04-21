@@ -35,7 +35,7 @@
                      if(isset($_POST['available_Question'][$IDs])){
                         $available_update=1;    
                      }else
-                     {
+                     { 
                          $available_update=0;
                      }                     
                     

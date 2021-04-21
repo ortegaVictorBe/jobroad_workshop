@@ -6,23 +6,18 @@ session_start();
 require "../model/ConnectDB.php";
 require "../model/Question.php";
 require "../model/Answer.php";
+require "../model/GameControl.php";
+
 
 $answer= new Answer();
 $question=new Question();
+$gameControl=new GameControl();
+
 
 //Getting the total of available Questions
 $totalAvailableQuestions=$question->totalAvailableQuestions();
+$currentGameId=$gameControl->getIdGame();
 
-//Evaluating if we have to delete de answers
-
-if (isset($_POST['playingControl']) && isset($_POST['playingControl'])==1) {
-//  playing mode
-}else{
-    //Deleting the answers
-     $answer->deleteAnswers();
-     $question->commitChanges();
-    
-}
 
 if ($totalAvailableQuestions['total_questions'] > 0) {   
         if ($_SERVER["REQUEST_METHOD"]=="POST") {
@@ -68,5 +63,5 @@ if ($totalAvailableQuestions['total_questions'] > 0) {
 
 unset($answer);
 unset($question);
-
+unset($gameControl);
 ?>

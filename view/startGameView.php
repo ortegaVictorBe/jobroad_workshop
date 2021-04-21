@@ -33,9 +33,11 @@
 
             <div class="col">
                 <div class="jumbotron p-2 text-center">
-                    <?php if (isset($_POST['btnLoadTop3'])) { ?>
+                    <?php if (isset($_POST['btnLoadTop3'])) { 
+                        // update top3 in game controler
+                        $gameControl->updateTop3($currentGameId,$_SESSION['currentQuestion_ID']);                        
+                        ?>
                     <div class="row">
-                        <input type="hidden" name="playingControl" value=1>
                         <div class="col"><img src="../img/top3.png" class="img-fluid ml-3" /> </div>
                         <div class="col">
                             <?php $answer->getTop3($_SESSION['currentQuestion_ID'])?>

@@ -5,9 +5,14 @@ session_start();
 require "../model/ConnectDB.php";
 require "../model/Question.php";
 require "../model/Answer.php";
+require "../model/GameControl.php";
+require "../model/PlayerControl.php";
+
 
 $answer= new Answer();
 $question=new Question();
+$gameControl=new GameControl();
+$playerControl=new PlayerControl();
 
 //Clean function - reviw the Dataentry
 function cleanInput($data){
@@ -19,14 +24,24 @@ function cleanInput($data){
 
 //Evaluate if there are Questions availables
 $totalAvailableQuestions=$question->totalAvailableQuestions();
+$currentGameId=$gameControl->getIdGame();
 
 if ($totalAvailableQuestions['total_questions'] > 0) {
-    require '../view/answerUserView.php';    
-}else{
+    $currentQuestion=$question->loadCurrentQuestion();
+    var_dump($currentQuestion);
+    if($currentQuestion == 0){
     require '../view/answerUserNoQuestionView.php';
+    }else{
+        require '../view/answerUserView.php';    
+    }
+    
+}else{
+    
 }
 
 unset($answer);
 unset($question);
+unset($playerControl);
+unset($gameControl);
 
 ?>

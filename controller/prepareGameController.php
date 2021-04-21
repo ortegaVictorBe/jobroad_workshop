@@ -6,26 +6,48 @@ require "../model/ConnectDB.php";
 require "../model/Question.php";
 require "../model/Answer.php";
 require "../model/GameControl.php";
+require "../model/PlayerControl.php";
 
-
+$answer= new Answer();
 $gameControl=new GameControl();
+$playerControl=new PlayerControl();
 
-//Aqui Limpiar las tablas de control y de respuestas de los usuarios
 
-// $currentDate=date("d/m/Y h:i");
-$currentDate=date(DATE_W3C);
-$gameSeted=$gameControl->setGame(session_id(),5,5,$currentDate);
+if (isset($_POST['btnGo'])){
+    //strat Game
+    $idCurrentGame=$gameControl->getIdGame();
+    $gameControl->startGame($idCurrentGame);
 
-if (isset($gameSeted) && $gameSeted > 0){
- //game set sucecssfully
- require '../view/prepareGameView.php';    
+    //Openwindow StartGame with Javascript
+    echo "<script type='text/javascript'> window.open('./startGameController.php', '_self');</script>";
+    
+    // require './startGameController.php';    
 
 }else{
-    //game no set
-    require '../view/answerUserNoQuestionView.php';
-}
 
+        //Limpiar TODOS los usuarios conectados y las respuestas
+        $gameControl->deleteGames();
+        $playerControl->deletePlayers();
+        $answer->deleteAnswers();
+        //Fin limpiar
+
+        $currentDate=date(DATE_W3C);
+        $gameSeted=$gameControl->setGame(session_id(),5,5,$currentDate);
+
+        if (isset($gameSeted) && $gameSeted > 0){ 
+        //getting the current id_game and activating
+        $idCurrentGame=$gameControl->getIdGame(); 
+        $gameControl->activateGame($idCurrentGame);
+
+        require '../view/prepareGameView.php';    
+
+        }else{
+            //game no set
+            echo "Game no Seted.. OMG.. contact to Developer";    
+}
+}
 unset($gameControl);
-//unset($question);
+unset($playerControl);
+
 
 ?>
