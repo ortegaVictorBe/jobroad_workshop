@@ -57,15 +57,24 @@ public function loadCurrentQuestion(){
     $handle=$this->conn->getPdo()->prepare('SELECT `ID`,`order`,`description` FROM blackbox_questions WHERE `current`=:current');
     $handle->bindValue(':current','1');
     $handle->execute();
-    $currenQuestion=$handle->fetchAll();
+    $currenQuestion=$handle->fetch();
     // var_dump($currenQuestion);
     if ($handle->rowCount() >0){     
-        return $currenQuestion[0];        
+        return $currenQuestion;        
     }else{
         return 0;
         // REvisar este retorno--ojo --
     }
 }
+
+//clear current question, to start the game
+public function clearCurrentQuestion(){
+    $handle = $this->conn->getPdo()->prepare("UPDATE blackbox_questions SET `current`=:a");         
+    $handle->bindValue(':a', 0);    
+    $handle->execute();
+    return $handle->rowCount();
+}
+
 //Update Question in listQuestionView
 public function updateQuestion($id, $desc, $available, $order){            
     $handle = $this->conn->getPdo()->prepare("UPDATE blackbox_questions SET `description`=:a, `available`=:b, `order`=:c WHERE `ID`=:d");         

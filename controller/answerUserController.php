@@ -8,6 +8,16 @@ require "../model/Answer.php";
 require "../model/GameControl.php";
 require "../model/PlayerControl.php";
 
+echo '<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script>
+$(document).ready(function() {
+    function reloadView() {
+        location.reload();
+    }
+    setInterval(reloadView, 5000);
+});
+</script>';
+
 
 $answer= new Answer();
 $question=new Question();
@@ -28,9 +38,9 @@ $currentGameId=$gameControl->getIdGame();
 
 if ($totalAvailableQuestions['total_questions'] > 0) {
     $currentQuestion=$question->loadCurrentQuestion();
-    var_dump($currentQuestion);
+    // var_dump($currentQuestion);
     if($currentQuestion == 0){
-    require '../view/answerUserNoQuestionView.php';
+        require '../view/answerUserNoQuestionView.php';
     }else{
         require '../view/answerUserView.php';    
     }

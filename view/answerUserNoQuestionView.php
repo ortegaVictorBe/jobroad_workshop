@@ -35,11 +35,10 @@
                             <div class="alert alert-dismissible alert-warning p-5 w-75">
                                 <h3 class="display-4">
                                     <strong>
-                                        We haven't questions for you; Try again or wait for instructions :)
+                                        We don't have questions for you; wait for instructions :)
                                     </strong>
                                 </h3>
                             </div>
-                            <button id="try" type="button" class="btn btn-warning">Try again</button>
                         </center>
                     </form>
                 </div>
@@ -49,7 +48,7 @@
                     <img src="../img/blackbox_bg_small.png" class="img-fluid" />
                 </div>
                 <div class="jumbotron p-2 text-center">
-                    <h2>Answers</h2>
+                    <h2><i class='fa fa-spinner fa-pulse fa-1x fa-fw'></i></h2>
                 </div>
             </div>
         </div>

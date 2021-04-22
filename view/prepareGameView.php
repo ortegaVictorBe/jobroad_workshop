@@ -49,7 +49,7 @@
                         </div>
                         <div class="col">
                             <div class="row"></div>
-                            <h6 class='text-center'><i class='fa fa-spinner fa-pulse fa-1x fa-fw'></i></i>
+                            <h6 class='text-center'><i class='fa fa-spinner fa-pulse fa-1x fa-fw'></i>
                                 <span>Waiting for players ...</span>
                             </h6>
                             <div id="usersCount"></div>

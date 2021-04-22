@@ -34,24 +34,28 @@
         <?php
             $showMessage=0;
             $message="";
-            $currentQuestion=$question->loadCurrentQuestion();   
-                        
+            $currentQuestion=$question->loadCurrentQuestion(); 
             
-            if(isset($_POST['btnUpdate'])){
-                $return=0;
-                if(isset($_POST['userAnswer'])){
-                    $ID_Question=cleanInput($_POST['ID_Question']);
-                    $userAnswer=strtoupper(cleaninput($_POST['userAnswer']));
-                    $return=$answer->saveAnswer($ID_Question,$userAnswer,$session_id);                    
-                }
-                
-                if (isset($return) && $return >0) {                     
-                    $question->commitChanges();
-                    $showMessage=1;
-                    // $message=$userAnswer;                      
-                }
-                
-                }   
+            $questionAnswered=$answer->questionAnswered($currentQuestion['ID'],$session_id);
+            var_dump($questionAnswered);
+
+            if (!isset($questionAnswered)) {                                                       
+                    if(isset($_POST['btnUpdate'])){
+                        $return=0;
+                        if(isset($_POST['userAnswer'])){
+                            $ID_Question=cleanInput($_POST['ID_Question']);
+                            $userAnswer=strtoupper(cleaninput($_POST['userAnswer']));
+                            $return=$answer->saveAnswer($ID_Question,$userAnswer,$session_id);                    
+                        }
+                        
+                        if (isset($return) && $return >0) {                     
+                            $question->commitChanges();
+                            $showMessage=1;                                         
+                        }                    
+                    
+                        
+                        } 
+                    }
                              
                 $questionAnswered=$answer->questionAnswered($currentQuestion['ID'],$session_id);
                 if (isset($questionAnswered)) {                
@@ -59,10 +63,10 @@
                     $message="You have sent this answer .. We are collecting the results.. please wait..";                      
                 }
                  
-            //Next Question Button
-            if (isset($_POST['btnNextQuestion'])) {
-                $showMessage=0;
-            }                 
+            // //Next Question Button
+            // if (isset($_POST['btnNextQuestion'])) {
+            //     $showMessage=0;
+            // }                 
             
             ?>
         <!-- saveAnswer -->
@@ -91,8 +95,7 @@
                                 </div>
                             </center>";
                             }
-                        }
-                        
+                        }                    
                         
                         if($showMessage==0) {?>
                     <form action="" method="POST">
@@ -106,11 +109,7 @@
                         <fieldset class="mt-3">
                             <input type="submit" class="btn btn-primary" name="btnUpdate" value="Send Answer">
                         </fieldset>
-                        <? }else{ ?>
-                        <fieldset class="mt-3">
-                            <input id="btnNextQuestion" class="btn btn-primary" value="Next Question">
-                        </fieldset>
-                        <?}?>
+                        <? }?>
                     </form>
                 </div>
             </div>

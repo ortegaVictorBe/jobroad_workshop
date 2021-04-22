@@ -8,6 +8,7 @@ require "../model/Answer.php";
 require "../model/GameControl.php";
 require "../model/PlayerControl.php";
 
+$question= new Question();
 $answer= new Answer();
 $gameControl=new GameControl();
 $playerControl=new PlayerControl();
@@ -19,16 +20,16 @@ if (isset($_POST['btnGo'])){
     $gameControl->startGame($idCurrentGame);
 
     //Openwindow StartGame with Javascript
-    echo "<script type='text/javascript'> window.open('./startGameController.php', '_self');</script>";
+    echo "<script type='text/javascript'> window.open('./startGameController.php', '_self');</script>";    
     
-    // require './startGameController.php';    
 
 }else{
 
-        //Limpiar TODOS los usuarios conectados y las respuestas
+        //Limpiar TODOS los usuarios conectados y las respuestas, setear a 0 ka actual pregunta
         $gameControl->deleteGames();
         $playerControl->deletePlayers();
-        $answer->deleteAnswers();
+        $question->clearCurrentQuestion();
+        $answer->deleteAnswers();        
         //Fin limpiar
 
         $currentDate=date(DATE_W3C);
