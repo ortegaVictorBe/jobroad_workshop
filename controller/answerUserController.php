@@ -8,11 +8,12 @@ require "../model/Answer.php";
 require "../model/GameControl.php";
 require "../model/PlayerControl.php";
 
-echo '<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+echo '<script type="text/javascript" src="https://code.jquery.com/jquery.js"></script>
 <script>
 $(document).ready(function() {
     function reloadView() {
-        location.reload();
+        // location.reload();
+        window.open("./answerUserController.php", "_self")
     }
     setInterval(reloadView, 5000);
 });

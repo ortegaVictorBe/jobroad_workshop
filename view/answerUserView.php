@@ -37,7 +37,9 @@
             $currentQuestion=$question->loadCurrentQuestion(); 
             
             $questionAnswered=$answer->questionAnswered($currentQuestion['ID'],$session_id);
-            var_dump($questionAnswered);
+            // var_dump($questionAnswered);
+            // var_dump($_POST);
+
 
             if (!isset($questionAnswered)) {                                                       
                     if(isset($_POST['btnUpdate'])){

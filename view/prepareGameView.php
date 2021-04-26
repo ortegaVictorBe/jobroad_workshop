@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/style.css" />
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery.js"></script>
     <script>
     $(document).ready(function() {
         function reloadUsers() {
